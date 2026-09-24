@@ -1,0 +1,27 @@
+name = "edge"
+main = "src/index.py"
+compatibility_date = "2025-08-01"
+compatibility_flags = ["python_workers"]
+
+[ai]
+binding = "AI"
+
+[[durable_objects.bindings]]
+name = "CHAT_SESSION"
+class_name = "ChatSession"
+
+[[migrations]]
+tag = "v1"
+new_classes = ["ChatSession"]
+
+[[workflows]]
+name = "study-plan-workflow"
+binding = "STUDY_PLAN"
+class_name = "StudyPlanWorkflow"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "study-buddy-db"
+database_id = "local-db-id"
+migrations_dir = "migrations"
+
