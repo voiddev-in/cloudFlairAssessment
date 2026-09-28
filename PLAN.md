@@ -1,5 +1,9 @@
 # Project Plan — AI Chat Assistant on Cloudflare (Python · React · MongoDB)
 
+> **Update (Phase 0 decision):** MongoDB and the separate memory service were dropped. Persistence uses
+> **Cloudflare D1** (sessions, messages, memories) plus **Durable Object storage** (short-term chat window), so the whole
+> backend is a single Python Worker. Sections below that mention Mongo or the memory service are superseded by this.
+
 ## 0. Requirements recap (from README)
 
 | # | Required component | How we satisfy it |
