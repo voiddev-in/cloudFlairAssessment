@@ -1,10 +1,13 @@
 {
   "name": "edge",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "Study Buddy edge API (Python Worker + Durable Objects + D1 + Workers AI)",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "wrangler dev",
+    "dev:mock": "wrangler dev --local --var MOCK_AI:1",
+    "db:migrate:local": "wrangler d1 migrations apply study-buddy-db --local",
+    "db:migrate:remote": "wrangler d1 migrations apply study-buddy-db --remote",
+    "deploy": "wrangler deploy"
   },
   "keywords": [],
   "author": "",
@@ -12,5 +15,6 @@
   "type": "commonjs",
   "devDependencies": {
     "wrangler": "^4.138.0"
-  }
+  },
+  "private": true
 }

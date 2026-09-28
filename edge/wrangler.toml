@@ -1,7 +1,12 @@
 name = "edge"
 main = "src/index.py"
-compatibility_date = "2025-08-01"
-compatibility_flags = ["python_workers"]
+compatibility_date = "2026-09-01"
+# disable_python_external_sdk: use the runtime's built-in `workers` module, so plain `wrangler` works (no pywrangler/uv).
+compatibility_flags = ["python_workers", "python_workflows", "disable_python_external_sdk"]
+
+[vars]
+# Set to your Pages domain in production, e.g. "https://study-buddy.pages.dev".
+ALLOWED_ORIGIN = "*"
 
 [ai]
 binding = "AI"
@@ -12,7 +17,7 @@ class_name = "ChatSession"
 
 [[migrations]]
 tag = "v1"
-new_classes = ["ChatSession"]
+new_sqlite_classes = ["ChatSession"]
 
 [[workflows]]
 name = "study-plan-workflow"
@@ -22,6 +27,7 @@ class_name = "StudyPlanWorkflow"
 [[d1_databases]]
 binding = "DB"
 database_name = "study-buddy-db"
+# Replace with the id printed by `npx wrangler d1 create study-buddy-db` before deploying.
 database_id = "local-db-id"
 migrations_dir = "migrations"
 
